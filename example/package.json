@@ -1,0 +1,10 @@
+{
+  "scripts": {
+    "dev": "nuxt",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "nuxt": "latest",
+    "@nuxtjs/axios": "latest"
+  }
+}

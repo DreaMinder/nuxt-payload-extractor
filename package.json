@@ -1,0 +1,24 @@
+{
+  "contributors": [
+    {
+      "name": "DreaMinder",
+      "email": "dreaminder7@gmail.com"
+    }
+  ],
+  "description": "Nuxt.js module that makes `nuxt generate` command to store html and payload separately.",
+  "files": [
+    "lib"
+  ],
+  "homepage": "https://github.com/DreaMinder/nuxt-payload-extractor",
+  "license": "MIT",
+  "main": "lib/module.js",
+  "name": "Nuxt payload extractor",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DreaMinder/nuxt-payload-extractor.git"
+  },
+  "version": "0.0.2"
+}
