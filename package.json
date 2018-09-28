@@ -12,7 +12,7 @@
   "homepage": "https://github.com/DreaMinder/nuxt-payload-extractor",
   "license": "MIT",
   "main": "lib/module.js",
-  "name": "nuxt-payload-sextractor",
+  "name": "nuxt-payload-extractor",
   "publishConfig": {
     "access": "public"
   },
