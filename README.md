@@ -51,5 +51,5 @@ async asyncData({ app, error, route }){
 
 ## How it works
 
-- Extracts `<script>window.__NUXT__= ... </script>` replasing it with `<script src="payload.js">`
+- Extracts `<script>window.__NUXT__= ... </script>` replacing it with `<script src="payload.js">`
 - Makes two files along with `index.html` of prerendered page: `payload.js` for initial page load and `payload.json` for client-side navigation
