@@ -9,15 +9,27 @@
 
 <script>
 export default {
-  async asyncData({ app, params, error, route }){
+  async asyncData({ $axios, $payloadURL, route, error }){
     try {
-      let payload = {};
-      if(process.static && process.client && route.path !== '/') //lil hack for page without extracted payload
-        payload = await app.$axios.$get(document.location.origin + route.path + '/payload.json')
-      else
-        payload.post = await app.$axios.$get(`/post.json`)
+      if(process.static && process.client && route.path !== '/'){
+        //route.path !== '/' - because this route is blacklisted for nuxt-payload-extractor
+        let {data} = await $axios.get($payloadURL(route))
+        return data
+      }
 
-      return payload
+      let post = await $axios.$get(`/post.json`)
+      return {
+        post
+      }
+
+      //Or alternative way
+      // let payload = {};
+      // if(process.static && process.client && route.path !== '/')
+      //   payload = await app.$axios.$get(document.location.origin + route.path + '/payload.json')
+      // else
+      //   payload.post = await app.$axios.$get(`/post.json`)
+      //
+      // return payload
     } catch (e) {
       console.error(e);
       error({ statusCode: 404, message: e.message })

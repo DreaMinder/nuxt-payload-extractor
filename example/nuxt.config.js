@@ -10,7 +10,7 @@ module.exports = {
   },
   modules: [
     '@nuxtjs/axios',
-    ['nuxt-payload-extractor', {blacklist: ['/']}]
+    ['@/../lib/module.js', {blacklist: ['/']}] //nuxt-payload-extractor dependency
   ],
   axios: {
     prefix: '/api'

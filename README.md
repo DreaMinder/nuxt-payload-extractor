@@ -1,6 +1,6 @@
 # Nuxt payload extractor
 
-Nuxt.js module that makes `nuxt generate` command to store html and payload separately. **Early stages of development, I warned ya!**
+Nuxt.js module that makes `nuxt generate` command to store html and payload separately. See it in action on my site: [DreaMinder.pro](https://DreaMinder.pro)
 
 ## Benefits
 
@@ -28,26 +28,27 @@ Nuxt.js module that makes `nuxt generate` command to store html and payload sepa
 }
 ```
 
-- Add asyncData custom logic
+- Add asyncData custom logic with $payloadURL helper
 
 ```js
-async asyncData({ app, error, route }){
-  try {
-    let payload = {};
-    if(process.static && process.client)
-      payload = await app.$axios.$get(document.location.origin + route.path + '/payload.json')
-    else
-      payload.post = await app.$axios.$get(`/{your api data url}`)
+async asyncData({ $axios, $payloadURL, route }){
+  if(process.static && process.client){
+    let {data} = await $axios.get($payloadURL(route))
+    return data
+  }
 
-    return payload
-  } catch (e) {
-    console.error(e);
-    error({ statusCode: 404, message: e.message })
+  let post = await $axios.$get(`/post.json`)
+  return {
+    post
   }
 }
 ```
 
 - Run `npm run generate`
+
+## Options
+
+You can blacklist specific paths, so they will be generated in native way. But you have to disable payload request inside of asyncData yourself. Check out example dir for details.
 
 ## How it works
 

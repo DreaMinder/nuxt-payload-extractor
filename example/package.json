@@ -5,7 +5,6 @@
   },
   "dependencies": {
     "nuxt": "latest",
-    "nuxt-payload-extractor": "latest",
     "@nuxtjs/axios": "latest"
   }
 }
