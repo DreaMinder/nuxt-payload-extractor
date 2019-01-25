@@ -50,6 +50,10 @@ async asyncData({ $axios, $payloadURL, route }){
 
 You can blacklist specific paths, so they will be generated in native way. But you have to disable payload request inside of asyncData yourself. Check out example dir for details.
 
+## Caveats
+
+There may be issues with vuex data requests and nested routes.
+
 ## How it works
 
 - Extracts `<script>window.__NUXT__= ... </script>` replacing it with `<script src="payload.js">`
