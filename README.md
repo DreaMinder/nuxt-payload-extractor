@@ -32,11 +32,11 @@ Nuxt.js module that makes `nuxt generate` command to store html and payload sepa
 
 ```js
 async asyncData({ $axios, $payloadURL, route }){
-  if(process.static && process.client){
-    let {data} = await $axios.get($payloadURL(route))
-    return data
-  }
+  //if generated and works as client navigation, fetch previously saved static JSON payload 
+  if(process.static && process.client)
+    return await $axios.$get($payloadURL(route))
 
+  //your request logic
   let post = await $axios.$get(`/post.json`)
   return {
     post
