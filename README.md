@@ -4,7 +4,7 @@ Nuxt.js module that makes `nuxt generate` command to store html and payload sepa
 
 ## Benefits
 
-✓ If you use external API to fill your project with data, even after your site have been prerendered, you need to keep your API running to make client-side navigation possible. With this module your API data stores along with prerendered HTML, so the issue is solved
+✓ If you use external API to fill your project with data, even after your site has been prerendered, you need to keep your API running to make client-side navigation possible. With this module your API data stores along with prerendered HTML, so the issue is solved
 
 ✓ Increases page download speed for crawlers
 
