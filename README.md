@@ -46,6 +46,25 @@ async asyncData({ $axios, $payloadURL, route }){
 
 - Run `npm run generate`
 
+## GraphQL usage
+
+You'll need axios in your production bundle, your graphQL client is only invoked server-side, on 'generate' command.
+
+```js
+async asyncData({ $axios, $payloadURL, route, app }) {
+  if (process.static && process.client) {
+    return await $axios.$get($payloadURL(route))
+  } else {
+    let gqlData = await app.apolloProvider.defaultClient.query({
+      query: gqlquery
+    })
+    return {
+      gqlData
+    }
+  }
+}
+```
+
 ## Options
 
 You can blacklist specific paths, so they will be generated in native way. But you have to disable payload request inside of asyncData yourself. Check out example dir for details.
@@ -53,6 +72,7 @@ You can blacklist specific paths, so they will be generated in native way. But y
 ## Caveats
 
 There may be issues with vuex data requests and nested routes.
+Keep in mind that payload.json has not hash in its name, so it shouldn't be cached in browser.
 
 ## How it works
 
