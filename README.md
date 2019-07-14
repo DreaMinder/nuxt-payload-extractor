@@ -32,7 +32,7 @@ Nuxt.js module that makes `nuxt generate` command to store html and payload sepa
 
 ```js
 async asyncData({ $axios, $payloadURL, route }){
-  //if generated and works as client navigation, fetch previously saved static JSON payload 
+  //if generated and works as client navigation, fetch previously saved static JSON payload
   if(process.static && process.client)
     return await $axios.$get($payloadURL(route))
 
@@ -68,6 +68,8 @@ async asyncData({ $axios, $payloadURL, route, app }) {
 ## Options
 
 You can blacklist specific paths, so they will be generated in native way. But you have to disable payload request inside of asyncData yourself. Check out example dir for details.
+
+If you need to cache all json and js payloads in browser, you can use `versioning: true` flag to add timestamp to payload filenames. Keep in mind that timestamp changes on every generate run, so cache invalidates. Also, `nuxt generate --no-build` is not supported in this case.
 
 ## Caveats
 
