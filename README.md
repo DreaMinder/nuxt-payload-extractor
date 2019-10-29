@@ -33,7 +33,7 @@ Nuxt.js module that makes `nuxt generate` command to store html and payload sepa
 ```js
 async asyncData({ $axios, $payloadURL, route }){
   //if generated and works as client navigation, fetch previously saved static JSON payload
-  if(process.static && process.client)
+  if(process.static && process.client && $payloadURL)
     return await $axios.$get($payloadURL(route))
 
   //your request logic
@@ -52,7 +52,7 @@ You'll need axios in your production bundle, your graphQL client is only invoked
 
 ```js
 async asyncData({ $axios, $payloadURL, route, app }) {
-  if (process.static && process.client) {
+  if (process.static && process.client && $payloadURL) {
     return await $axios.$get($payloadURL(route))
   } else {
     let gqlData = await app.apolloProvider.defaultClient.query({
