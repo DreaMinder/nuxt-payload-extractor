@@ -12,7 +12,7 @@ module.exports = {
     '@nuxtjs/axios',
     ['@/../lib/module.js', {
       blacklist: ['/'],
-      versioning: true,
+      versioning: false,
     }] //nuxt-payload-extractor dependency
   ],
   axios: {
