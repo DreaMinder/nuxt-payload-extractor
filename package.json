@@ -20,5 +20,5 @@
     "type": "git",
     "url": "git+https://github.com/DreaMinder/nuxt-payload-extractor.git"
   },
-  "version": "0.0.14"
+  "version": "1.0.0"
 }
