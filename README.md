@@ -1,6 +1,6 @@
 # Nuxt payload extractor
 
-Nuxt.js module that makes `nuxt generate` command to store html and payload separately. See it in action on my site: [DreaMinder.pro](https://DreaMinder.pro)
+Nuxt.js module that makes `nuxt generate` command to store data payload in `dist` dir implementing [full static generation](https://github.com/nuxt/rfcs/issues/22). See it in action on my site: [DreaMinder.pro](https://DreaMinder.pro)
 
 ## Benefits
 
@@ -67,16 +67,16 @@ async asyncData({ $axios, $payloadURL, route, app }) {
 
 ## Options
 
-You can blacklist specific paths, so they will be generated in native way. But you have to disable payload request inside of asyncData yourself. Check out example dir for details.
+You can blacklist specific paths using `blacklist: []` options. They will be generated in native way. But you have to disable payload request inside of asyncData yourself. Check out example dir for details.
 
-If you need to cache all json and js payloads in browser, you can use `versioning: true` flag to add timestamp to payload filenames. Keep in mind that timestamp changes on every generate run, so cache invalidates. Also, `nuxt generate --no-build` is not supported in this case.
+All payloads have timestamp applied to their names for better cache invalitaion. You can turn them off by using `versioning: false` option. Keep in mind that timestamp changes on every generate run. Also, `nuxt generate --no-build` is not supported in this case.
 
 ## Caveats
 
-There may be issues with vuex data requests and nested routes.
-Keep in mind that payload.json has not hash in its name, so it shouldn't be cached in browser.
+- Are you using nested routes (with `<nuxt-child />`)? This case isn't compatible with `nuxt-payload-extractor`. It will only work if parent and child routes return different data-keys (ex. `return { postsList }` and `return { singlePost }`).
+- Are you filling your vuex store with page-specific data? It will break on client-side navigation. Use `NuxtServerInit` action for global vuex data or return your vuex data from `asyncData` to make it work.
 
 ## How it works
 
 - Extracts `<script>window.__NUXT__= ... </script>` replacing it with `<script src="payload.js">`
-- Makes two files along with `index.html` of prerendered page: `payload.js` for initial page load and `payload.json` for client-side navigation
+- Makes two files along with `index.html` of a prerendered page: `payload.js` for initial page load and `payload.json` for client-side navigation
