@@ -69,7 +69,7 @@ async asyncData({ $axios, $payloadURL, route, app }) {
 
 You can blacklist specific paths using `blacklist: []` options. They will be generated in native way. But you have to disable payload request inside of asyncData yourself. Check out example dir for details.
 
-All payloads have timestamp applied to their names for better cache invalitaion. You can turn them off by using `versioning: false` option. Keep in mind that timestamp changes on every generate run. Also, `nuxt generate --no-build` is not supported in this case.
+All payloads have timestamp applied to their names for better cache invalidation. You can turn them off by using `versioning: false` option. Keep in mind that timestamp changes on every generate run. Also, `nuxt generate --no-build` is not supported in this case.
 
 ## Caveats
 
