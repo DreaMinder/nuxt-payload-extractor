@@ -2,6 +2,8 @@
 
 Nuxt.js module that makes `nuxt generate` command to store data payload in `dist` dir implementing [full static generation](https://github.com/nuxt/rfcs/issues/22). See it in action on my site: [DreaMinder.pro](https://DreaMinder.pro)
 
+⚠️⚠️⚠️ This feature called ["full static generated mode"](https://github.com/nuxt/rfcs/issues/22) will be available as native Nuxt.js feature soon, consider using beta package `nuxt-edge` to try it out.
+
 ## Benefits
 
 ✓ If you use external API to fill your project with data, even after your site has been prerendered, you need to keep your API running to make client-side navigation possible. With this module your API data stores along with prerendered HTML, so the issue is solved
