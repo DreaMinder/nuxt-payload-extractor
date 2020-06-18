@@ -2,7 +2,7 @@
 
 Nuxt.js module that makes `nuxt generate` command to store data payload in `dist` dir implementing [full static generation](https://github.com/nuxt/rfcs/issues/22). See it in action on my site: [DreaMinder.pro](https://DreaMinder.pro)
 
-⚠️⚠️⚠️ This feature called ["full static generated mode"](https://github.com/nuxt/rfcs/issues/22) will be available as native Nuxt.js feature soon, consider using beta package `nuxt-edge` to try it out.
+⚠️⚠️⚠️ This feature called ["full static generated mode"](https://nuxtjs.org/blog/going-full-static) has been released as a native Nuxt.js feature recently. You might want to try it out before using this module, it is much more powerful. ⚠️⚠️⚠️
 
 ## Benefits
 
